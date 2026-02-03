@@ -3,43 +3,131 @@
 <head>
   <meta charset="UTF-8">
   <title>Chat Privado 💬</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
+
+  <!-- Modal simple -->
+  <style>
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.6);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    .modal.show { display: flex; }
+    .modal-box {
+      background: #111;
+      color: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      max-width: 360px;
+      width: 90%;
+      text-align: center;
+    }
+    .modal-box h2 { margin-bottom: 10px; }
+    .modal-box p { font-size: 14px; opacity: .9; }
+    .modal-box code {
+      display: block;
+      background: #222;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 6px;
+      user-select: all;
+    }
+    .modal-box button {
+      margin-top: 12px;
+    }
+    .donate-btn {
+  margin-left: auto;
+  padding: 4px 10px;          /* 👈 más angosto */
+  font-size: 13px;
+  height: 28px;
+  line-height: 1;
+  background: #0f172a;
+  color: #22c55e;
+  font-weight: bold;
+  border-radius: 8px;
+  border: 1px solid #22c55e;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+/* Halo neon */
+.donate-btn::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 10px;
+  background: linear-gradient(
+    90deg,
+    #22c55e,
+    #4ade80,
+    #22c55e
+  );
+  opacity: 0.7;
+  filter: blur(6px);
+  z-index: -1;
+  animation: neonPulse 2.5s linear infinite;
+}
+
+/* Animación neon */
+@keyframes neonPulse {
+  0% {
+    filter: blur(4px);
+    opacity: 0.2;
+  }
+  50% {
+    filter: blur(8px);
+    opacity: 0.5;
+  }
+  100% {
+    filter: blur(4px);
+    opacity: 0.2;
+  }
+}
+
+/* Hover */
+.donate-btn:hover {
+  color: #a7f3d0;
+  border-color: #4ade80;
+}
+
+  </style>
 </head>
 <body>
 
 <div class="phone">
 
-  <header>
+  <header style="display:flex;align-items:center;gap:10px">
     <div class="avatar big"></div>
-    <div>
-      <h1>Usuario</h1>
+    <div style="flex:1">
+      <h1 style="display:flex;align-items:center;gap:10px">
+        Chat Privado
+        <button id="donateBtn" class="donate-btn">❤️ Donar</button>
+      </h1>
       <span id="status">🔴 No conectado</span>
     </div>
   </header>
 
-  <div class="guide" id="guide">
-    <p>
-      1️⃣ Uno toca <b>Crear</b><br>
-      2️⃣ Copia el código numérico<br>
-      3️⃣ El otro pega y toca <b>Unirse</b><br>
-      4️⃣ Se crea un nuevo código<br>
-      5️⃣ Copia, devuelve y toca <b>Unirse</b><br>
-      6️⃣ Cuando diga <b>Conectado</b>, chatean 💙
-    </p>
-    <button id="closeGuide">Entendido</button>
+  <div class="controls">
+    <button id="create">Crear chat</button>
+    <button id="copy" disabled>📋 Copiar código</button>
+    <button id="destroy" disabled>🗑️ Eliminar chat</button>
   </div>
 
-  <div class="controls">
-    <button id="create">Crear</button>
-    <button id="join">Unirse</button>
+  <div class="join-box">
+    <input id="joinInput" placeholder="Pegá código de 6 dígitos">
+    <button id="pasteBtn">📋 Pegar</button>
+    <button id="joinBtn">Conectar</button>
   </div>
 
-  <textarea id="signal" placeholder="Código numérico..."></textarea>
-
-  <div class="controls">
-    <button id="copy">Copiar</button>
-    <button id="paste">Pegar</button>
+  <div class="link-box" id="linkBox" hidden>
+    <input id="roomLink" readonly>
   </div>
 
   <div id="messages" class="messages"></div>
@@ -51,6 +139,48 @@
 
 </div>
 
+<!-- MODAL DONACIONES -->
+<div class="modal" id="donateModal">
+  <div class="modal-box">
+    <h2>❤️ Apoyá este proyecto</h2>
+    <p>
+      Este chat privado se mantiene gracias a donaciones anónimas.
+      Tu aporte ayuda a pagar infraestructura, mantener el servicio
+      y seguir mejorándolo.
+    </p>
+
+    <p><strong>Datos para donar:</strong></p>
+
+    <code>
+      Alias: axnsoft.corp<br>
+      Titular: Rodrigo Nicolas Mercado<br>
+      Banco: Mercado Pago
+    </code>
+
+    <p>Las donaciones son totalmente voluntarias y anónimas.</p>
+
+    <button id="closeDonate">Cerrar</button>
+  </div>
+</div>
+
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+<script src="firebase.js"></script>
 <script src="chat.js"></script>
+
+<script>
+  const donateBtn = document.getElementById("donateBtn");
+  const donateModal = document.getElementById("donateModal");
+  const closeDonate = document.getElementById("closeDonate");
+
+  donateBtn.onclick = () => donateModal.classList.add("show");
+  closeDonate.onclick = () => donateModal.classList.remove("show");
+  donateModal.onclick = e => {
+    if (e.target === donateModal) donateModal.classList.remove("show");
+  };
+</script>
+
 </body>
 </html>
