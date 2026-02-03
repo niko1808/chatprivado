@@ -330,6 +330,7 @@ imgInput.onchange = () => {
     const payload = { img: reader.result };
     channel.send(JSON.stringify(payload));
     renderMessage(payload, "me");
+    enableChat()
   };
   reader.readAsDataURL(file);
 };

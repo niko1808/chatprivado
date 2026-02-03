@@ -129,19 +129,18 @@
   const modal = document.getElementById("legalModal");
   const check = document.getElementById("legalCheck");
   const btn = document.getElementById("legalAccept");
-
+/*
   if (localStorage.getItem("legalAccepted")==="true") {
     modal.classList.remove("show");
     return;
   }
-
+*/
   document.body.style.overflow="hidden";
   check.onchange = ()=> btn.disabled = !check.checked;
   btn.onclick = ()=>{
-    localStorage.setItem("legalAccepted","true");
-    modal.classList.remove("show");
-    document.body.style.overflow="";
-  };
+  modal.classList.remove("show");
+  document.body.style.overflow="";
+};
 })();
 </script>
 
