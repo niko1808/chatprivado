@@ -1,0 +1,162 @@
+* {
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  margin: 0;
+  background: #0b141a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100dvh;
+}
+
+/* CONTENEDOR PRINCIPAL */
+.phone {
+  width: 100%;
+  max-width: 420px;
+  height: 100dvh;
+  background: #111b21;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* DESKTOP */
+@media (min-width: 600px) {
+  .phone {
+    height: 640px;
+    border-radius: 18px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+}
+
+header {
+  background: #202c33;
+  padding: 12px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 16px;
+  color: #e9edef;
+}
+
+header span {
+  font-size: 12px;
+  color: #aebac1;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #60a5fa, #93c5fd);
+}
+
+.avatar.big {
+  width: 42px;
+  height: 42px;
+}
+
+/* GUÍA */
+.guide {
+  background: #182229;
+  padding: 10px;
+  font-size: 14px;
+}
+
+.guide button {
+  width: 100%;
+  margin-top: 8px;
+  min-height: 44px;
+}
+
+/* BOTONES */
+.controls {
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+}
+
+button {
+  flex: 1;
+  background: #00a884;
+  border: none;
+  color: white;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 15px;
+  min-height: 44px;
+  touch-action: manipulation;
+}
+
+/* TEXTO */
+textarea {
+  margin: 8px;
+  height: 80px;
+  resize: none;
+  background: #0b141a;
+  color: #e9edef;
+  border: 1px solid #2a3942;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 14px;
+}
+
+/* MENSAJES */
+.messages {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+  background: #0b141a;
+  scroll-behavior: smooth;
+}
+
+.msg {
+  display: flex;
+  margin-bottom: 8px;
+}
+
+.msg.me {
+  justify-content: flex-end;
+}
+
+.bubble {
+  max-width: 75%;
+  padding: 10px;
+  border-radius: 12px;
+  font-size: 15px;
+  word-wrap: break-word;
+}
+
+.me .bubble {
+  background: #005c4b;
+  color: #e9edef;
+}
+
+.other .bubble {
+  background: #202c33;
+  color: #e9edef;
+}
+
+/* INPUT */
+.input {
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: #111b21;
+}
+
+input {
+  flex: 1;
+  border-radius: 20px;
+  border: none;
+  padding: 12px 14px;
+  font-size: 16px; /* evita zoom iOS */
+}

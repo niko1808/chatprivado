@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Chat Privado 💬</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="phone">
+
+  <header>
+    <div class="avatar big"></div>
+    <div>
+      <h1>Usuario</h1>
+      <span id="status">🔴 No conectado</span>
+    </div>
+  </header>
+
+  <div class="guide" id="guide">
+    <p>
+      1️⃣ Uno toca <b>Crear</b><br>
+      2️⃣ Copia el código numérico<br>
+      3️⃣ El otro pega y toca <b>Unirse</b><br>
+      4️⃣ Se crea un nuevo código<br>
+      5️⃣ Copia, devuelve y toca <b>Unirse</b><br>
+      6️⃣ Cuando diga <b>Conectado</b>, chatean 💙
+    </p>
+    <button id="closeGuide">Entendido</button>
+  </div>
+
+  <div class="controls">
+    <button id="create">Crear</button>
+    <button id="join">Unirse</button>
+  </div>
+
+  <textarea id="signal" placeholder="Código numérico..."></textarea>
+
+  <div class="controls">
+    <button id="copy">Copiar</button>
+    <button id="paste">Pegar</button>
+  </div>
+
+  <div id="messages" class="messages"></div>
+
+  <div class="input">
+    <input id="messageInput" placeholder="Mensaje..." disabled>
+    <button id="send" disabled>➤</button>
+  </div>
+
+</div>
+
+<script src="chat.js"></script>
+</body>
+</html>
