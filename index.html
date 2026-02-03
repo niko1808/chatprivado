@@ -98,6 +98,53 @@
 }
 
   </style>
+
+  <!-- ================= MODAL LEGAL ================= -->
+<div class="modal show" id="legalModal">
+  <div class="modal-box">
+    <h2>📜 Aviso legal</h2>
+    <p>
+      Este software permite el intercambio de mensajes privados.<br><br>
+      El autor <strong>Rodrigo Nicolas Mercado</strong> no se responsabiliza
+      por el uso que el usuario haga del sistema.
+      <br><br>
+      El uso implica aceptación total de esta condición.
+    </p>
+
+    <label style="display:block;margin-top:10px;font-size:13px">
+      <input type="checkbox" id="legalCheck">
+      Acepto y asumo toda responsabilidad
+    </label>
+
+    <button id="legalAccept" style="margin-top:12px" disabled>Aceptar</button>
+  </div>
+</div>
+
+<!-- ================= INPUT IMAGEN ================= -->
+<input type="file" id="imgInput" accept="image/*" hidden>
+
+<script>
+/* ===== MODAL LEGAL ===== */
+(function(){
+  const modal = document.getElementById("legalModal");
+  const check = document.getElementById("legalCheck");
+  const btn = document.getElementById("legalAccept");
+
+  if (localStorage.getItem("legalAccepted")==="true") {
+    modal.classList.remove("show");
+    return;
+  }
+
+  document.body.style.overflow="hidden";
+  check.onchange = ()=> btn.disabled = !check.checked;
+  btn.onclick = ()=>{
+    localStorage.setItem("legalAccepted","true");
+    modal.classList.remove("show");
+    document.body.style.overflow="";
+  };
+})();
+</script>
+
 </head>
 <body>
 
