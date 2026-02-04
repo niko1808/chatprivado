@@ -163,77 +163,111 @@
   </style>
 
 <!-- ================= MODAL LEGAL ================= -->
-<div class="modal show" id="legalModal">
-  <div class="modal-box">
-    <h2>📜 Aviso legal y condiciones de uso</h2>
+  <div class="modal show" id="legalModal">
+    <div class="modal-box">
+      <h2>📜 Términos de uso</h2>
 
-    <p style="font-size:14px;line-height:1.5">
-      Este software permite el intercambio de mensajes privados entre usuarios
-      mediante salas temporales protegidas por un código.
-      <br><br>
+      <div style="max-height:60vh;overflow-y:auto;padding-right:6px">
 
-      El autor y desarrollador, <strong>Rodrigo Nicolás Mercado</strong>, 
-      <strong>NO</strong> se responsabiliza por el uso indebido, ilegal,
-      malicioso o contrario a la ley que cualquier usuario haga de la aplicación.
-      <br><br>
+        <h3>1. Descripción del servicio y finalidad</h3>
+        <p>
+          Este software es una herramienta de comunicación privada y temporal,
+          diseñada para permitir el intercambio de mensajes entre personas que
+          ya se conocen previamente, mediante salas protegidas por un código
+          único de acceso.
+        </p>
+        <p>
+          Su finalidad principal es facilitar comunicaciones directas,
+          confidenciales y efímeras, tales como intercambios profesionales,
+          técnicos o empresariales, sin almacenamiento permanente de datos ni
+          historial de conversaciones.
+        </p>
+        <p>
+          La aplicación no funciona como red social, plataforma pública de
+          mensajería ni sistema de contacto entre desconocidos.
+        </p>
 
-      El usuario es el único y exclusivo responsable del contenido que envía,
-      recibe o comparte, incluyendo (pero no limitado a) mensajes, enlaces,
-      imágenes, archivos o cualquier otro tipo de información.
-      <br><br>
+        <h3>2. Naturaleza del servicio</h3>
+        <p>
+          El desarrollador actúa exclusivamente como proveedor de una herramienta
+          técnica neutral.
+        </p>
+        <ul>
+          <li>No intermedia contenidos</li>
+          <li>No modera conversaciones</li>
+          <li>No almacena mensajes</li>
+          <li>No registra historial</li>
+          <li>No tiene acceso al contenido transmitido</li>
+        </ul>
 
-      Esta aplicación <strong>NO</strong> promueve ni tolera:
-      <ul style="margin:6px 0 6px 16px">
-        <li>Actividades ilegales</li>
-        <li>Acoso, amenazas o violencia</li>
-        <li>Difusión de contenido ilegal o sensible</li>
-        <li>Suplantación de identidad</li>
-        <li>Uso para fines delictivos</li>
-      </ul>
+        <h3>3. Responsabilidad del uso</h3>
+        <p>
+          El uso de esta aplicación es exclusiva responsabilidad del usuario.
+        </p>
+        <p>
+          El autor y desarrollador,
+          <strong>Rodrigo Nicolás Mercado</strong>, no supervisa ni controla las
+          comunicaciones.
+        </p>
+        <p>
+          Cada usuario es responsable del contenido que envía, recibe o comparte.
+        </p>
 
-      El desarrollador no tiene control sobre las conversaciones privadas ni
-      sobre el comportamiento de los usuarios, y no será responsable por daños,
-      perjuicios, conflictos legales o consecuencias derivadas del uso de la app.
-    </p>
+        <h3>4. Usos prohibidos</h3>
+        <ul>
+          <li>Actividades ilegales</li>
+          <li>Acoso o violencia</li>
+          <li>Difusión de contenido ilegal</li>
+          <li>Suplantación de identidad</li>
+          <li>Uso fraudulento o delictivo</li>
+        </ul>
 
-    <hr style="margin:12px 0">
+        <h3>5. Edad mínima</h3>
+        <p>
+          El uso está limitado a personas mayores de 18 años.
+        </p>
+        <p>
+          El desarrollador no verifica la edad y no asume responsabilidad por
+          declaraciones falsas.
+        </p>
 
-    <p style="font-size:14px;line-height:1.5">
-      <strong>Funcionamiento de la aplicación:</strong><br>
-      • Una persona crea una sala privada.<br>
-      • El sistema genera un <strong>código de 6 dígitos</strong>.<br>
-      • Ese código se comparte con otra persona.<br>
-      • El receptor puede:
-      <ul style="margin:6px 0 6px 16px">
-        <li>Pegar el código automáticamente</li>
-        <li>O escribirlo manualmente y presionar <strong>Conectar</strong></li>
-      </ul>
-      • Al conectar, ambos usuarios ingresan a un <strong>chat privado</strong>.
-    </p>
+        <h3>6. Limitación de responsabilidad</h3>
+        <p>
+          El desarrollador no será responsable por daños o conflictos derivados
+          del uso indebido de la aplicación.
+        </p>
 
-    <hr style="margin:12px 0">
+        <h3>7. Funcionamiento</h3>
+        <ul>
+          <li>Un usuario crea una sala</li>
+          <li>Se genera un código único</li>
+          <li>El código se comparte voluntariamente</li>
+          <li>La comunicación es privada y temporal</li>
+        </ul>
 
-    <p style="font-size:14px;line-height:1.5">
-      <strong>Financiamiento y donaciones:</strong><br>
-      Esta aplicación se mantiene activa gracias a <strong>donaciones anónimas</strong>.
-      No existe obligación alguna de donar, pero cualquier aporte ayuda a
-      sostener el desarrollo, el mantenimiento y la mejora continua del sistema.
-      <br><br>
-      Si la aplicación te resulta útil, considerá colaborar 💙.
-      <br><br>
-      <strong>¡Gracias por apoyar el proyecto!</strong>
-    </p>
+        <h3>8. Donaciones</h3>
+        <p>
+          La aplicación se sostiene mediante donaciones voluntarias.
+        </p>
 
-    <label style="display:block;margin-top:12px;font-size:13px">
-      <input type="checkbox" id="legalCheck">
-      He leído, entendido y acepto todas las condiciones. Asumo total responsabilidad por el uso que haga de la aplicación.
-    </label>
+        <h3>9. Aceptación</h3>
+        <p>
+          Al usar esta aplicación, el usuario acepta íntegramente estos términos.
+        </p>
 
-    <button id="legalAccept" style="margin-top:14px" disabled>
-      Aceptar y continuar
-    </button>
+      </div>
+
+      <label style="display:block;margin:12px 0;font-size:13px">
+        <input type="checkbox" id="legalCheck">
+        Tengo 18+ años y he leído, entendido y acepto todas las condiciones.
+      </label>
+
+      <button id="legalAccept" disabled>
+        Aceptar y continuar
+      </button>
+    </div>
   </div>
-</div>
+
 
 
 <!-- ================= INPUT IMAGEN ================= -->
@@ -330,6 +364,7 @@
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 
 <script src="firebase.js"></script>
+<script src="contentFilter.js"></script>
 <script src="chat.js"></script>
 
 <script>

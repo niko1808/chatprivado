@@ -333,7 +333,13 @@ function sendMessage() {
   replyTo = null;
 }
 
-sendBtn.onclick = sendMessage;
+sendBtn.onclick = () => {
+  const text = input.value.trim();
+  if (!text) return;
+
+  safeSend(text, sendMessage);
+};
+
 
 input.addEventListener("keydown", e => {
   if (channel?.readyState === "open") {
@@ -341,7 +347,9 @@ input.addEventListener("keydown", e => {
   }
   if (e.key === "Enter") {
     e.preventDefault();
-    sendMessage();
+    const text = input.value.trim();
+    if (!text || channel?.readyState !== "open") return;
+    safeSend(text, sendMessage);
   }
 });
 
