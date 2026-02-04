@@ -131,6 +131,7 @@ button:disabled {
   box-shadow: 0 0 0 2px #00a88455;
 }
 
+
 /* ================= MENSAJES ================= */
 
 .messages {
@@ -232,6 +233,8 @@ button:disabled {
   outline: none;
   box-shadow: 0 0 0 2px #00a88455;
 }
+
+
 
 /* ================= EXTENSIONES CHAT ================= */
 

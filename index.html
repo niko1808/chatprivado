@@ -8,38 +8,101 @@
 
   <!-- Modal simple -->
   <style>
-    .modal {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,.6);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-    }
-    .modal.show { display: flex; }
-    .modal-box {
-      background: #111;
-      color: #fff;
-      padding: 20px;
-      border-radius: 12px;
-      max-width: 360px;
-      width: 90%;
-      text-align: center;
-    }
-    .modal-box h2 { margin-bottom: 10px; }
-    .modal-box p { font-size: 14px; opacity: .9; }
-    .modal-box code {
-      display: block;
-      background: #222;
-      padding: 10px;
-      margin: 10px 0;
-      border-radius: 6px;
-      user-select: all;
-    }
-    .modal-box button {
-      margin-top: 12px;
-    }
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.65);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal.show {
+  display: flex;
+}
+
+/* Caja del modal */
+.modal-box {
+  background: #111;
+  color: #fff;
+
+  width: 90%;
+  max-width: 420px;
+
+  max-height: 85vh;        /* CLAVE */
+  overflow-y: auto;        /* CLAVE */
+
+  padding: 20px;
+  border-radius: 14px;
+  text-align: left;
+
+  box-shadow: 0 20px 50px rgba(0,0,0,.7);
+}
+
+/* Título */
+.modal-box h2 {
+  margin: 0 0 12px;
+  text-align: center;
+  font-size: 20px;
+}
+
+/* Texto */
+.modal-box p {
+  font-size: 14px;
+  line-height: 1.55;
+  opacity: .9;
+}
+
+/* Código */
+.modal-box code {
+  display: block;
+  background: #1e1e1e;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 8px;
+  font-size: 13px;
+  user-select: all;
+  word-break: break-all;
+}
+
+/* Botón */
+.modal-box button {
+  margin-top: 14px;
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Scrollbar */
+.modal-box::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modal-box::-webkit-scrollbar-track {
+  background: #1a1a1a;
+  border-radius: 10px;
+}
+
+.modal-box::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 10px;
+}
+
+.modal-box::-webkit-scrollbar-thumb:hover {
+  background: #666;
+}
+
+/* Pantallas chicas */
+@media (max-height: 600px) {
+  .modal-box {
+    max-height: 90vh;
+  }
+}
+
     .donate-btn {
   margin-left: auto;
   padding: 4px 10px;          /* 👈 más angosto */
@@ -99,26 +162,79 @@
 
   </style>
 
-  <!-- ================= MODAL LEGAL ================= -->
+<!-- ================= MODAL LEGAL ================= -->
 <div class="modal show" id="legalModal">
   <div class="modal-box">
-    <h2>📜 Aviso legal</h2>
-    <p>
-      Este software permite el intercambio de mensajes privados.<br><br>
-      El autor <strong>Rodrigo Nicolas Mercado</strong> no se responsabiliza
-      por el uso que el usuario haga del sistema.
+    <h2>📜 Aviso legal y condiciones de uso</h2>
+
+    <p style="font-size:14px;line-height:1.5">
+      Este software permite el intercambio de mensajes privados entre usuarios
+      mediante salas temporales protegidas por un código.
       <br><br>
-      El uso implica aceptación total de esta condición.
+
+      El autor y desarrollador, <strong>Rodrigo Nicolás Mercado</strong>, 
+      <strong>NO</strong> se responsabiliza por el uso indebido, ilegal,
+      malicioso o contrario a la ley que cualquier usuario haga de la aplicación.
+      <br><br>
+
+      El usuario es el único y exclusivo responsable del contenido que envía,
+      recibe o comparte, incluyendo (pero no limitado a) mensajes, enlaces,
+      imágenes, archivos o cualquier otro tipo de información.
+      <br><br>
+
+      Esta aplicación <strong>NO</strong> promueve ni tolera:
+      <ul style="margin:6px 0 6px 16px">
+        <li>Actividades ilegales</li>
+        <li>Acoso, amenazas o violencia</li>
+        <li>Difusión de contenido ilegal o sensible</li>
+        <li>Suplantación de identidad</li>
+        <li>Uso para fines delictivos</li>
+      </ul>
+
+      El desarrollador no tiene control sobre las conversaciones privadas ni
+      sobre el comportamiento de los usuarios, y no será responsable por daños,
+      perjuicios, conflictos legales o consecuencias derivadas del uso de la app.
     </p>
 
-    <label style="display:block;margin-top:10px;font-size:13px">
+    <hr style="margin:12px 0">
+
+    <p style="font-size:14px;line-height:1.5">
+      <strong>Funcionamiento de la aplicación:</strong><br>
+      • Una persona crea una sala privada.<br>
+      • El sistema genera un <strong>código de 6 dígitos</strong>.<br>
+      • Ese código se comparte con otra persona.<br>
+      • El receptor puede:
+      <ul style="margin:6px 0 6px 16px">
+        <li>Pegar el código automáticamente</li>
+        <li>O escribirlo manualmente y presionar <strong>Conectar</strong></li>
+      </ul>
+      • Al conectar, ambos usuarios ingresan a un <strong>chat privado</strong>.
+    </p>
+
+    <hr style="margin:12px 0">
+
+    <p style="font-size:14px;line-height:1.5">
+      <strong>Financiamiento y donaciones:</strong><br>
+      Esta aplicación se mantiene activa gracias a <strong>donaciones anónimas</strong>.
+      No existe obligación alguna de donar, pero cualquier aporte ayuda a
+      sostener el desarrollo, el mantenimiento y la mejora continua del sistema.
+      <br><br>
+      Si la aplicación te resulta útil, considerá colaborar 💙.
+      <br><br>
+      <strong>¡Gracias por apoyar el proyecto!</strong>
+    </p>
+
+    <label style="display:block;margin-top:12px;font-size:13px">
       <input type="checkbox" id="legalCheck">
-      Acepto y asumo toda responsabilidad
+      He leído, entendido y acepto todas las condiciones. Asumo total responsabilidad por el uso que haga de la aplicación.
     </label>
 
-    <button id="legalAccept" style="margin-top:12px" disabled>Aceptar</button>
+    <button id="legalAccept" style="margin-top:14px" disabled>
+      Aceptar y continuar
+    </button>
   </div>
 </div>
+
 
 <!-- ================= INPUT IMAGEN ================= -->
 <input type="file" id="imgInput" accept="image/*" hidden>
